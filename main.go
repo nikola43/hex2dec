@@ -23,6 +23,10 @@ func main() {
 
 	// check if argument is valid hex number
 	hex := args[1]
+	// check if hex contais 0x prefix
+	if len(hex) > 2 && hex[0:2] == "0x" {
+		hex = hex[2:]
+	}
 	_, err := strconv.ParseUint(hex, 16, 64)
 	if err != nil {
 		fmt.Println("invalid hex number")
